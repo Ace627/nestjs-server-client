@@ -1,0 +1,16 @@
+.custom-table.el-table {
+  --ap-table-cell-align: center;
+  --el-table-header-text-color: var(--el-text-color-primary);
+  --el-table-header-bg-color: #eaeaea;
+  border-radius: var(--el-border-radius-base);
+  .el-table__header {
+    letter-spacing: 2px;
+  }
+  .cell {
+    text-align: var(--ap-table-cell-align);
+  }
+  /* 操作列按钮添加默认间隔 */
+  .el-link + .el-link {
+    margin-left: 8px;
+  }
+}

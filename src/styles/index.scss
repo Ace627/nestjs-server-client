@@ -1,0 +1,27 @@
+@use './variables.scss'; // 全局 CSS 变量
+@use 'nprogress/nprogress.css';
+@use './transition.scss';
+@use './element-plus/index.scss';
+@use './layout/layout-common.scss'; // Layout
+@use './layout/layout-classical.scss';
+@import './iconfont/iconfont.css';
+
+body {
+  font-size: var(--el-font-size-base);
+  font-family: var(--el-font-family);
+  background-color: var(--el-bg-color-page);
+}
+
+/* 灰色模式 */
+.showGreyMode {
+  filter: grayscale(1);
+}
+/* 色弱模式 */
+.showColorWeakness {
+  filter: invert(0.8);
+}
+
+/* 顶部加载进度条的颜色 */
+#nprogress .bar {
+  background-color: var(--el-color-primary);
+}

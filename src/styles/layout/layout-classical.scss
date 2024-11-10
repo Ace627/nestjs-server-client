@@ -1,0 +1,90 @@
+.layout-classical {
+  .sidebar-container {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1001;
+    width: var(--ap-sidebar-width);
+    height: 100%;
+    color: var(--ap-sidebar-text-color);
+    background-color: var(--ap-sidebar-bg-color);
+    transition: width var(--el-transition-duration);
+    backdrop-filter: blur(8px);
+    box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
+    overflow: hidden;
+
+    .el-menu {
+      --el-menu-hover-bg-color: var(--ap-sidebar-hover-bg-color);
+      --el-menu-item-height: var(--ap-sidebar-item-height);
+      --el-menu-sub-item-height: var(--ap-sidebar-item-height);
+      --el-menu-bg-color: var(--ap-sidebar-bg-color);
+      --el-menu-text-color: var(--ap-sidebar-text-color);
+      --el-menu-active-color: var(--ap-sidebar-active-color);
+      width: 100%;
+      height: 100%;
+      border: none;
+      /* 菜单左侧图标的大小 */
+      .el-menu-item .iconfont,
+      .el-sub-menu__title .iconfont {
+        font-size: inherit;
+      }
+      /* 菜单左侧图标与右侧菜单文本的距离 */
+      .el-menu-item .title,
+      .el-sub-menu__title .title {
+        margin-left: 8px;
+      }
+    }
+    &.has-logo .el-menu {
+      height: calc(100% - var(--ap-header-height));
+    }
+  }
+
+  .main-container {
+    position: relative;
+    height: 100%;
+    margin-left: var(--ap-sidebar-width);
+    transition: margin-left var(--el-transition-duration);
+  }
+
+  &.desktop.hide-sidebar {
+    .sidebar-container {
+      width: var(--ap-sidebar-hide-width);
+    }
+    .main-container {
+      margin-left: var(--ap-sidebar-hide-width);
+    }
+  }
+
+  &.mobile {
+    .main-container {
+      margin-left: 0;
+    }
+  }
+  &.mobile.hide-sidebar {
+    .sidebar-container {
+      width: 0;
+      pointer-events: none;
+    }
+  }
+}
+
+/* 侧栏菜单折叠时 鼠标悬浮右侧出现的菜单 */
+.el-popper.layout-classical-menu-popper {
+  --el-menu-active-color: var(--ap-sidebar-active-color);
+  --el-menu-hover-bg-color: var(--ap-sidebar-hover-bg-color);
+  --el-menu-item-height: var(--ap-sidebar-item-height);
+  --el-menu-bg-color: var(--ap-sidebar-bg-color);
+  --el-menu-text-color: var(--ap-sidebar-text-color);
+  border: none;
+  background: transparent;
+  /* 菜单左侧图标的大小 */
+  .el-menu-item .iconfont,
+  .el-sub-menu__title .iconfont {
+    font-size: inherit;
+  }
+  /* 菜单左侧图标与右侧菜单文本的距离 */
+  .el-menu-item .title,
+  .el-sub-menu__title .title {
+    margin-left: 8px;
+  }
+}

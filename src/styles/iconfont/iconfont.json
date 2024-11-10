@@ -1,0 +1,282 @@
+{
+  "id": "4611674",
+  "name": "Common Iconfont",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "3283215",
+      "name": "角色",
+      "font_class": "Role",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "12959365",
+      "name": "系统管理",
+      "font_class": "Setting",
+      "unicode": "e634",
+      "unicode_decimal": 58932
+    },
+    {
+      "icon_id": "18166839",
+      "name": "用户,女,头像",
+      "font_class": "User",
+      "unicode": "e8ea",
+      "unicode_decimal": 59626
+    },
+    {
+      "icon_id": "7964510",
+      "name": "退出",
+      "font_class": "SwitchButton",
+      "unicode": "e630",
+      "unicode_decimal": 58928
+    },
+    {
+      "icon_id": "1046777",
+      "name": "验证码",
+      "font_class": "Guard",
+      "unicode": "e615",
+      "unicode_decimal": 58901
+    },
+    {
+      "icon_id": "435978",
+      "name": "微信",
+      "font_class": "WeChat",
+      "unicode": "e7e5",
+      "unicode_decimal": 59365
+    },
+    {
+      "icon_id": "2075254",
+      "name": "浏览器-IE",
+      "font_class": "Browser",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "41599401",
+      "name": "vscode",
+      "font_class": "VSCode",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "25934350",
+      "name": "外链",
+      "font_class": "External",
+      "unicode": "f68e",
+      "unicode_decimal": 63118
+    },
+    {
+      "icon_id": "5029",
+      "name": "列表",
+      "font_class": "List",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "41590016",
+      "name": "多人",
+      "font_class": "ManyPeople",
+      "unicode": "e626",
+      "unicode_decimal": 58918
+    },
+    {
+      "icon_id": "11139884",
+      "name": "所以",
+      "font_class": "So",
+      "unicode": "e621",
+      "unicode_decimal": 58913
+    },
+    {
+      "icon_id": "11139887",
+      "name": "因为",
+      "font_class": "Because",
+      "unicode": "e623",
+      "unicode_decimal": 58915
+    },
+    {
+      "icon_id": "12619946",
+      "name": "base64",
+      "font_class": "Base64",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "1159898",
+      "name": "随机播放",
+      "font_class": "Random",
+      "unicode": "e622",
+      "unicode_decimal": 58914
+    },
+    {
+      "icon_id": "2551682",
+      "name": "公共-红旗",
+      "font_class": "Flag",
+      "unicode": "e641",
+      "unicode_decimal": 58945
+    },
+    {
+      "icon_id": "15718632",
+      "name": "工具",
+      "font_class": "Tool",
+      "unicode": "e6cf",
+      "unicode_decimal": 59087
+    },
+    {
+      "icon_id": "8210752",
+      "name": "首页",
+      "font_class": "Home",
+      "unicode": "e64e",
+      "unicode_decimal": 58958
+    },
+    {
+      "icon_id": "11958445",
+      "name": "太极_A",
+      "font_class": "TaiChi",
+      "unicode": "e8e5",
+      "unicode_decimal": 59621
+    },
+    {
+      "icon_id": "16394899",
+      "name": "展开",
+      "font_class": "Expand",
+      "unicode": "e67e",
+      "unicode_decimal": 59006
+    },
+    {
+      "icon_id": "16394903",
+      "name": "收缩",
+      "font_class": "Fold",
+      "unicode": "e67f",
+      "unicode_decimal": 59007
+    },
+    {
+      "icon_id": "16517985",
+      "name": "优惠券",
+      "font_class": "Coupon",
+      "unicode": "e6c2",
+      "unicode_decimal": 59074
+    },
+    {
+      "icon_id": "19594620",
+      "name": "同步",
+      "font_class": "Sync",
+      "unicode": "e68e",
+      "unicode_decimal": 59022
+    },
+    {
+      "icon_id": "34922409",
+      "name": "复制",
+      "font_class": "CopyDocument",
+      "unicode": "e61d",
+      "unicode_decimal": 58909
+    },
+    {
+      "icon_id": "28410628",
+      "name": "身份证",
+      "font_class": "IdCard",
+      "unicode": "e672",
+      "unicode_decimal": 58994
+    },
+    {
+      "icon_id": "28410617",
+      "name": "上传",
+      "font_class": "Upload",
+      "unicode": "e671",
+      "unicode_decimal": 58993
+    },
+    {
+      "icon_id": "28410700",
+      "name": "下载",
+      "font_class": "Download",
+      "unicode": "e680",
+      "unicode_decimal": 59008
+    },
+    {
+      "icon_id": "28410428",
+      "name": "版权",
+      "font_class": "Copyright",
+      "unicode": "e656",
+      "unicode_decimal": 58966
+    },
+    {
+      "icon_id": "28410459",
+      "name": "窗口最大化",
+      "font_class": "WindowMaximize",
+      "unicode": "e65b",
+      "unicode_decimal": 58971
+    },
+    {
+      "icon_id": "28410464",
+      "name": "窗口还原",
+      "font_class": "WindowRestore",
+      "unicode": "e65c",
+      "unicode_decimal": 58972
+    },
+    {
+      "icon_id": "28410658",
+      "name": "锁（开）",
+      "font_class": "Unlock",
+      "unicode": "e678",
+      "unicode_decimal": 59000
+    },
+    {
+      "icon_id": "28410669",
+      "name": "锁",
+      "font_class": "Lock",
+      "unicode": "e67a",
+      "unicode_decimal": 59002
+    },
+    {
+      "icon_id": "6629949",
+      "name": "关闭",
+      "font_class": "Close",
+      "unicode": "e644",
+      "unicode_decimal": 58948
+    },
+    {
+      "icon_id": "8721197",
+      "name": "加号",
+      "font_class": "Plus",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "8721205",
+      "name": "减号",
+      "font_class": "Minus",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "14751764",
+      "name": "删除",
+      "font_class": "Delete",
+      "unicode": "e78e",
+      "unicode_decimal": 59278
+    },
+    {
+      "icon_id": "11078991",
+      "name": "搜索",
+      "font_class": "Search",
+      "unicode": "e629",
+      "unicode_decimal": 58921
+    },
+    {
+      "icon_id": "35162484",
+      "name": "左箭头 双",
+      "font_class": "ArrowLeftDouble",
+      "unicode": "e848",
+      "unicode_decimal": 59464
+    },
+    {
+      "icon_id": "35162488",
+      "name": "右箭头 双",
+      "font_class": "ArrowRightDouble",
+      "unicode": "e849",
+      "unicode_decimal": 59465
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+	// 控制是否启用括号对着色。使用 “workbench.colorCustomizations” 替代括号突出显示颜色
+	"editor.bracketPairColorization.enabled": true,
+
+	// 控制资源管理器是否应以紧凑形式呈现文件夹。
+	// 在这种形式中，单个子文件夹将被压缩在组合的树元素中。例如，对 Java 包结构很有用
+	"explorer.compactFolders": false,
+
+	/* -------------------------------------------------------------------------- */
+	/*                             Code Format Config                             */
+	/* -------------------------------------------------------------------------- */
+	// 指定默认的代码格式化工具
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	// 保存时对代码进行格式化
+	"editor.formatOnSave": true
+}

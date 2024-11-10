@@ -1,0 +1,21 @@
+/** 全局 CSS 变量，这种变量不仅可以在 CSS 和 SCSS 中使用，还可以导入到 JS 中使用 */
+
+:root {
+  /* -------------------------------------------------------------------------- */
+  /*                          Layout Classical Sidebar                          */
+  /* -------------------------------------------------------------------------- */
+  --ap-sidebar-width: 200px;
+  --ap-sidebar-hide-width: 54px;
+  --ap-sidebar-item-height: 42px;
+  --ap-sidebar-bg-color: #262935;
+  --ap-sidebar-text-color: #ffffff;
+  --ap-sidebar-active-color: var(--el-color-success-light-3);
+  --ap-sidebar-hover-bg-color: color-mix(in srgb, var(--ap-sidebar-bg-color), var(--el-color-white) 10%);
+
+  /* -------------------------------------------------------------------------- */
+  /*                           Layout Classical Navbar                          */
+  /* -------------------------------------------------------------------------- */
+  --ap-navbar-height: 50px;
+  --ap-header-height: var(--ap-navbar-height);
+  --ap-content-height: calc(100vh - var(--ap-header-height));
+}

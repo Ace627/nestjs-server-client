@@ -1,0 +1,26 @@
+.custom-dialog.el-dialog {
+  border-radius: 10px;
+  .el-dialog__header {
+    .el-dialog__title {
+      display: flex;
+      justify-content: center;
+      padding-bottom: 16px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      font-size: 18px;
+      border-bottom: 1px solid var(--el-border-color);
+    }
+  }
+
+  /* 取消对话框底部插槽 footer 的默认上边距 */
+  .el-dialog__footer {
+    padding-top: 0;
+  }
+  .dialog-footer {
+    display: flex;
+    justify-content: center;
+    .el-button {
+      width: 100px;
+    }
+  }
+}
