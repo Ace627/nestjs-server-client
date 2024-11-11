@@ -53,7 +53,7 @@ const columns = [
   { label: '序号', type: 'index', minWidth: '80px' },
   { label: '角色名称', prop: 'name', minWidth: '120px' },
   { label: '角色编码', prop: 'code', minWidth: '90px' },
-  { label: '角色描述', prop: 'desc', minWidth: '220px' },
+  // { label: '角色描述', prop: 'desc', minWidth: '220px' },
   { label: '状态', minWidth: '100px', slot: 'status' },
   // { label: '创建时间', prop: 'createTime', minWidth: '160px' },
   { label: '最近更新', prop: 'updateTime', minWidth: '160px' },
