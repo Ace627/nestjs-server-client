@@ -24,7 +24,7 @@ export class UserService {
 
   /** 根据 userId 删除用户信息 */
   static deleteOneById(params: { userId: string }): Promise<string> {
-    return request.delete('/system/user/deleteOneById', { params })
+    return request.get('/system/user/delete', { params })
   }
 
   /** 导入用户 Excel 表格 */

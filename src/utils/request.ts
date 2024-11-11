@@ -74,6 +74,12 @@ request.interceptors.response.use(
     } else if (message.includes('Request failed with status code')) {
       message = `系统接口 ${message.substr(message.length - 3)} 异常`
     }
+
+    // 如果后端返回错误提示信息，则采用该信息提示
+    if (error.response && error.response.data && error.response.data.message) {
+      message = error.response.data.message
+    }
+
     useModal().msgError(message, { duration: 5 * 1000 })
     return Promise.reject(error)
   },

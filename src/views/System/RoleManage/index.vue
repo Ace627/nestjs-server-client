@@ -19,7 +19,7 @@
     </div>
 
     <!-- 角色列表展示 -->
-    <ApTable :records="list" :columns :loading>
+    <ApTable :records="list" :columns :loading show-overflow-tooltip>
       <template #status="{ row }">
         <ApTag v-if="row.status === 0" color="var(--el-color-danger)"> 已停用</ApTag>
         <ApTag v-if="row.status === 1">已启用</ApTag>
@@ -33,7 +33,7 @@
     <!-- 分页组件 -->
     <ApPagination v-model:page="queryParams.pageNo" v-model:limit="queryParams.pageSize" :total @pagination="getList" />
 
-    <!-- 添加或修改用户配置对话框 -->
+    <!-- 添加或修改角色配置对话框 -->
     <RoleAction ref="roleActionRef" @getList="getList" />
   </div>
 </template>
