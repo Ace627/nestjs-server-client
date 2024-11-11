@@ -9,15 +9,15 @@
         <el-input v-model.trim="model.code" placeholder="请输入角色编码"></el-input>
       </el-form-item>
 
-      <el-form-item label="角色描述" prop="desc">
-        <el-input v-model.trim="model.desc" placeholder="请输入角色描述"></el-input>
+      <el-form-item label="角色状态" prop="status">
+        <el-radio-group v-model.number="model.status" size="small">
+          <el-radio label="启用" :value="1" border />
+          <el-radio label="停用" :value="0" border />
+        </el-radio-group>
       </el-form-item>
 
-      <el-form-item label="角色状态" prop="status">
-        <el-select v-model="model.status" placeholder="请选择角色状态">
-          <el-option label="启用" :value="1"></el-option>
-          <el-option label="停用" :value="0"></el-option>
-        </el-select>
+      <el-form-item label="角色备注" prop="remark">
+        <el-input type="textarea" :rows="4" resize="none" v-model.trim="model.remark" placeholder="请输入角色备注"></el-input>
       </el-form-item>
     </el-form>
 
@@ -46,14 +46,16 @@ const title = computed(() => (isUpdate.value ? '更新角色信息' : '新增角
 /** 表单提交成功后的提示语 */
 const submitMessage = computed(() => `角色${isUpdate.value ? '更新' : '新增'}成功`)
 /** 角色表单信息 */
-const model = ref({} as RoleEntity)
+const defaultModel: Partial<RoleEntity> = { status: 1 }
+const model = ref({ ...defaultModel } as RoleEntity)
 /** 角色表单实例 */
 const formInstance = useTemplateRef<FormInstance>('formRef')
 /** 表单校验规则配置 */
 const rules: FormRules<RoleEntity> = {
   name: [{ required: true, message: '角色名称不可为空', trigger: 'blur' }],
   code: [{ required: true, message: '角色编码不可为空', trigger: 'blur' }],
-  desc: [{ required: true, message: '角色描述不可为空', trigger: 'blur' }],
+  remark: [{ required: true, message: '角色备注不可为空', trigger: 'blur' }],
+  status: [{ required: true, message: '角色状态不可为空', trigger: 'blur' }],
 }
 
 /** 处理弹框打开的回调 */
@@ -65,7 +67,7 @@ async function handleOpen(roleId?: string) {
 /** 处理弹框关闭前的回调 */
 function handleClose() {
   formInstance.value?.resetFields()
-  model.value = {} as RoleEntity
+  model.value = defaultModel as RoleEntity
   dialogVisible.value = false
 }
 

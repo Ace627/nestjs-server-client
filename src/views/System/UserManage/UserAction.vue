@@ -24,15 +24,15 @@
       </el-form-item>
 
       <el-form-item label="用户性别" prop="gender">
-        <el-radio-group v-model.number="model.gender">
-          <el-radio v-for="{ label, value } in GenderOption" :key="value" :value>{{ label }}</el-radio>
+        <el-radio-group v-model.number="model.gender" size="small">
+          <el-radio v-for="{ label, value } in GenderOption" :key="value" :value border>{{ label }}</el-radio>
         </el-radio-group>
       </el-form-item>
 
       <el-form-item label="用户状态" prop="status">
-        <el-radio-group v-model.number="model.status">
-          <el-radio :value="0">停用</el-radio>
-          <el-radio :value="1">启用</el-radio>
+        <el-radio-group v-model.number="model.status" size="small">
+          <el-radio label="启用" :value="1" border />
+          <el-radio label="停用" :value="0" border />
         </el-radio-group>
       </el-form-item>
 

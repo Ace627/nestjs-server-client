@@ -15,6 +15,8 @@ type TableResult<T = any> = Promise<{
 
 interface BaseEntity {
   id: string
+  status: number
+  remark: string
   createTime: string
   updateTime: string
   createBy: string

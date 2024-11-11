@@ -6,10 +6,11 @@ const { VITE_ROUTER_NPROGRESS } = useEnv()
 const NProgress = useNProgress({ show: VITE_ROUTER_NPROGRESS }) // 顶部进度条
 
 /**
- * @description 路由全局前置守卫
+ * 路由全局前置守卫
  */
 export async function globalRouterBeforeGuard(to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) {
   NProgress.start()
+  const userStore = useUserStore()
   const hasToken = getAccessToken()
 
   /** 如果没有 Token，但在免登录的白名单中，则直接进入；否则将被重定向到登录页面 */
@@ -18,12 +19,22 @@ export async function globalRouterBeforeGuard(to: RouteLocationNormalized, from:
   /** 如果已经登录，并准备进入 Login 页面，则重定向到主页 */
   if (to.path.toLowerCase() === '/login') return next({ path: '/', replace: true })
 
-  /** 其余情况暂时放行 */
-  next()
+  try {
+    /** 如果用户已经获得其权限角色 直接放行 */
+    if (userStore.roles.length !== 0) return next()
+    /** 否则要重新获取权限角色 判断当前用户是否已拉取完 user_info 信息 */
+    await userStore.getInfo()
+    /** 确保添加路由已完成 设置 replace: true, 因此导航将不会留下历史记录 */
+    next({ ...to, replace: true })
+  } catch (error) {
+    /** 过程中发生任何错误，都直接重置 Token，并重定向到登录页面 */
+    await userStore.logout()
+    next(`/login?redirect=${to.fullPath}`)
+  }
 }
 
 /**
- * @description 路由全局后置守卫
+ * 路由全局后置守卫
  */
 export async function globalRouterAfterGuard(to: RouteLocationNormalized) {
   NProgress.done()

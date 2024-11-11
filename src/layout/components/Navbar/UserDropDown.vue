@@ -5,7 +5,7 @@
     </div>
 
     <template #dropdown>
-      <el-dropdown-item @click="handleLogout()">
+      <el-dropdown-item @click="handleLogout">
         <IconFont name="SwitchButton" />
         <span>退出登录</span>
       </el-dropdown-item>
@@ -20,7 +20,20 @@ const router = useRouter()
 const appStore = useAppStore()
 const userStore = useUserStore()
 const settingStore = useSettingStore()
-const { handleLogout } = useLogin()
+
+/**
+ * 处理退出登录的操作
+ */
+async function handleLogout() {
+  try {
+    await useModal().confirm(`确定注销并退出系统吗？`)
+    await userStore.logout()
+    window.location.reload()
+  } catch (error) {
+    if (error === 'cancel') return useModal().msg('操作取消')
+    console.log('error: ', error)
+  }
+}
 </script>
 
 <style lang="scss" scoped>

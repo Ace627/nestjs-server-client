@@ -6,6 +6,5 @@ interface UserEntity extends BaseEntity {
   phone: string
   age: number
   gender: number
-  status: number
   roleIds: number[]
 }
