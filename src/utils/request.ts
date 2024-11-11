@@ -56,7 +56,7 @@ request.interceptors.response.use(
     if (code === HttpStatusCode.Ok) {
       return response.data.result
     } else if (code === HttpStatusCode.Unauthorized) {
-      useModal().msgError(`登录已过期，请重新登录`)
+      useModal().msgError(message)
       setTimeout(() => useLogin().handleLogout({ confirm: false }), 1.5 * 1000)
     } else {
       useModal().msgError(message)

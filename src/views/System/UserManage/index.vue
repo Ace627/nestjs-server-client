@@ -23,8 +23,8 @@
     <!-- 用户列表展示 -->
     <ApTable :records="list" :columns :loading>
       <template #status="{ row }">
-        <ApTag v-if="row.status === 0" color="var(--el-color-danger)"> 已停用</ApTag>
-        <ApTag v-if="row.status === 1">已启用</ApTag>
+        <el-tag v-if="row.status === 0" type="danger">停用</el-tag>
+        <el-tag v-if="row.status === 1">正常</el-tag>
       </template>
       <template #action="{ row }">
         <el-link type="primary" @click="handleUpdate(row.id)">编辑</el-link>
@@ -53,9 +53,9 @@ const columns = [
   { label: '序号', type: 'index', minWidth: '80px' },
   { label: '用户账号', prop: 'username', minWidth: '120px' },
   { label: '真实姓名', prop: 'realname', minWidth: '90px' },
-  { label: '状态', minWidth: '100px', slot: 'status' },
   // { label: '用户昵称', prop: 'nickname', minWidth: '100px' },
   { label: '手机号码', prop: 'phone', minWidth: '120px' },
+  { label: '状态', minWidth: '100px', slot: 'status' },
   { label: '更新人员', prop: 'updateBy', minWidth: '100px' },
   // { label: '创建时间', prop: 'createTime', minWidth: '160px' },
   { label: '最近更新', prop: 'updateTime', minWidth: '160px' },
@@ -106,7 +106,7 @@ function handleCreate() {
 }
 
 /** 处理编辑用户的操作 */
-function handleUpdate(userId: number) {
+function handleUpdate(userId: string) {
   userActionInstance.value?.handleOpen(userId)
 }
 

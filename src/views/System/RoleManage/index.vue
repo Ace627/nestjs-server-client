@@ -21,8 +21,8 @@
     <!-- 角色列表展示 -->
     <ApTable :records="list" :columns :loading show-overflow-tooltip>
       <template #status="{ row }">
-        <ApTag v-if="row.status === 0" color="var(--el-color-danger)"> 已停用</ApTag>
-        <ApTag v-if="row.status === 1">已启用</ApTag>
+        <el-tag v-if="row.status === 0" type="danger">停用</el-tag>
+        <el-tag v-if="row.status === 1">正常</el-tag>
       </template>
       <template #action="{ row }">
         <el-link type="primary" @click="handleUpdate(row)">编辑</el-link>
@@ -53,9 +53,9 @@ const columns = [
   { label: '序号', type: 'index', minWidth: '80px' },
   { label: '角色名称', prop: 'name', minWidth: '120px' },
   { label: '角色编码', prop: 'code', minWidth: '90px' },
+  { label: '角色描述', prop: 'desc', minWidth: '220px' },
   { label: '状态', minWidth: '100px', slot: 'status' },
-  { label: '角色描述', prop: 'desc', minWidth: '180px' },
-  { label: '创建时间', prop: 'createTime', minWidth: '160px' },
+  // { label: '创建时间', prop: 'createTime', minWidth: '160px' },
   { label: '最近更新', prop: 'updateTime', minWidth: '160px' },
   { label: '操作', minWidth: '160px', slot: 'action' },
 ]

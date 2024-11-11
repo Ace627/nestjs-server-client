@@ -22,7 +22,7 @@
       </el-form-item>
       <el-checkbox v-model="loginInfo.rememberMe" style="margin: 0px 0px 25px 0px">记住密码</el-checkbox>
       <el-form-item>
-        <el-button :loading type="primary" class="w-full" size="large" @click.prevent="handleLogin">
+        <el-button :loading type="primary" class="w-full" size="large" @click.prevent="handleLogin(loginFormRef)">
           <span>{{ loading ? `登录中...` : `登录` }}</span>
         </el-button>
       </el-form-item>
@@ -37,7 +37,11 @@
 
 <script setup lang="ts">
 defineOptions({ name: 'Login' })
+import type { FormInstance } from 'element-plus'
 import defaultCaptcha from '@/assets/images/default/default-captcha.png'
+
+/** 登录表单实例 */
+const loginFormRef = ref<FormInstance>()
 
 const { loading, captchaURL, loginInfo, loginRules, getCaptcha, handleLogin } = useLogin()
 

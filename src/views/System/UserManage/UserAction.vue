@@ -77,7 +77,7 @@ const title = computed(() => (isUpdate.value ? '更新用户信息' : '新增用
 /** 表单提交成功后的提示语 */
 const submitMessage = computed(() => `用户${isUpdate.value ? '更新' : '新增'}成功`)
 /** 用户表单默认信息  */
-const defaultModel: Readonly<Partial<UserEntity>> = { gender: GenderEnum.UNKNOWN, password: '123456' }
+const defaultModel: Readonly<Partial<UserEntity>> = { gender: GenderEnum.UNKNOWN, password: '123456', status: 1 }
 /** 用户表单信息 */
 const model = ref({ ...defaultModel } as UserEntity)
 /** 用户表单实例 */

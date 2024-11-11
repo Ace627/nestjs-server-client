@@ -4,10 +4,7 @@ import type { FormInstance, FormRules } from 'element-plus'
 import { getAccessToken, getLoginInfo, removeAccessToken, removeLoginInfo, setAccessToken, setLoginInfo } from '@/utils/cache'
 import { pick } from 'lodash-es'
 
-/**
- * 请于登录表单的 el-form 上添加 <el-form ref="loginFormRef"></el-form>
- */
-export default (formRef: string = 'loginFormRef') => {
+export default () => {
   /** 返回当前的路由地址。相当于在模板中使用 $route */
   const route = router.currentRoute.value
   const redirect = (route.query['redirect'] as string) ?? '/' // 计算需要跳转的路径
@@ -17,8 +14,7 @@ export default (formRef: string = 'loginFormRef') => {
   const loading = ref<boolean>(false)
   /** 验证码图片地址 */
   const captchaURL = ref<string>()
-  /** 登录表单实例 */
-  const loginFormInstance = useTemplateRef<FormInstance>(formRef!)
+
   /** 登录表单数据 */
   const defaultModel: Readonly<Partial<LoginEntity.LoginInfo>> = { rememberMe: false }
   const loginInfo = ref({ ...defaultModel } as LoginEntity.LoginInfo)
@@ -43,9 +39,10 @@ export default (formRef: string = 'loginFormRef') => {
   }
 
   /** 处理登录的操作 */
-  async function handleLogin() {
+  async function handleLogin(formEl: FormInstance | undefined) {
     try {
-      await loginFormInstance.value?.validate()
+      if (!formEl) return
+      await formEl?.validate()
       loading.value = true
       const data = await LoginService.login(loginInfo.value)
       setAccessToken(data.accessToken) // 存储 Token
