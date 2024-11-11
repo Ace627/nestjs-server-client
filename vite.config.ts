@@ -23,8 +23,8 @@ export default defineConfig(({ command, mode }) => {
         /** 设置 `@` 指向 `src` 目录 */
         { find: '@', replacement: pathResolve('src') },
         /** 设置 `#` 指向 `types` 目录 */
-        { find: '#', replacement: pathResolve('types') }
-      ]
+        { find: '#', replacement: pathResolve('types') },
+      ],
     },
 
     server: {
@@ -42,10 +42,10 @@ export default defineConfig(({ command, mode }) => {
       proxy: {
         [VITE_ENV.VITE_BASE_API]: {
           target: VITE_ENV.VITE_BASE_URL,
-          changeOrigin: true
+          changeOrigin: true,
           // rewrite: (path) => path.replace(VITE_ENV.VITE_BASE_API, ''),
-        }
-      }
+        },
+      },
     },
 
     css: {
@@ -62,10 +62,11 @@ export default defineConfig(({ command, mode }) => {
        */
       preprocessorOptions: {
         scss: {
-          // api: 'modern-compiler',
-          additionalData: `@use "@/styles/element-plus/custom-theme.scss" as *;`
-        }
-      }
+          // https://element-plus.org/zh-CN/guide/installation.html#sass
+          api: 'modern-compiler',
+          additionalData: `@use "@/styles/element-plus/custom-theme.scss" as *;`,
+        },
+      },
     },
 
     build: {
@@ -125,9 +126,9 @@ export default defineConfig(({ command, mode }) => {
             // 这个 return 的值就是打包的名称
             // 可以利用浏览器的缓存机制 减少请求次数
             if (chunk.includes('node_modules')) return 'vendor'
-          }
-        }
-      }
+          },
+        },
+      },
     },
 
     esbuild: {
@@ -140,7 +141,7 @@ export default defineConfig(({ command, mode }) => {
        * 打包后是否移除所有的注释
        * http://esbuild.docschina.org/api/#legal-comments
        */
-      legalComments: VITE_ENV.VITE_CLEAR_COMMENT ? 'none' : 'inline'
-    }
+      legalComments: VITE_ENV.VITE_CLEAR_COMMENT ? 'none' : 'inline',
+    },
   }
 })
