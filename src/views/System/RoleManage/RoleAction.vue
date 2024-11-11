@@ -57,7 +57,7 @@ const rules: FormRules<RoleEntity> = {
 }
 
 /** 处理弹框打开的回调 */
-async function handleOpen(roleId?: number) {
+async function handleOpen(roleId?: string) {
   dialogVisible.value = true
   if (roleId) model.value = await RoleService.findOneById({ roleId })
 }

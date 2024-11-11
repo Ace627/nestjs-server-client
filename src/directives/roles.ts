@@ -6,6 +6,7 @@ import type { Directive } from 'vue'
 export const roles: Directive = {
   mounted(el: HTMLElement, binding) {
     const bindRoles: string[] = binding.value
+    console.log('bindRoles: ', bindRoles)
     if (Array.isArray(bindRoles) && bindRoles.length) {
       const userStore = useUserStore()
       const hasRole = userStore.roles.some((role) => bindRoles.includes(role))

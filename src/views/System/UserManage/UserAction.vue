@@ -102,7 +102,7 @@ async function getRoleList() {
 }
 
 /** 处理弹框打开的回调 */
-async function handleOpen(userId?: number) {
+async function handleOpen(userId?: string) {
   dialogVisible.value = true
   if (userId) model.value = await UserService.findOneById({ userId })
   getRoleList()

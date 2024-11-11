@@ -7,13 +7,13 @@ export class RoleService {
   }
 
   /** 根据 roleId 删除用户信息 */
-  static deleteOneById(params: { roleId: number }): Promise<string> {
-    return request.delete('/system/role/deleteOneById', { params })
+  static deleteOneById(params: { roleId: string }): Promise<string> {
+    return request.get('/system/role/delete', { params })
   }
 
   /** 更新用户信息 */
   static update(data: RoleEntity): Promise<string> {
-    return request.put('/system/role/update', data)
+    return request.post('/system/role/update', data)
   }
 
   /** 查询用户列表 */
@@ -27,7 +27,7 @@ export class RoleService {
   }
 
   /** 根据 roleId 查询用户信息 */
-  static findOneById(params: { roleId: number }): Promise<RoleEntity> {
-    return request.get('/system/role/findOneById', { params })
+  static findOneById(params: { roleId: string }): Promise<RoleEntity> {
+    return request.get('/system/role/detail', { params })
   }
 }

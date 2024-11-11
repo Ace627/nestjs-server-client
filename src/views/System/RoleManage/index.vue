@@ -42,7 +42,6 @@
 defineOptions({ name: 'RoleManage' })
 import { RoleService } from '@/api'
 import RoleAction from './RoleAction.vue'
-
 const queryParams = ref<TableQuery<RoleEntity>>({ pageNo: 1, pageSize: 10 })
 const loading = ref<boolean>(false)
 const list = ref<RoleEntity[]>([])
@@ -99,11 +98,15 @@ async function handleUpdate(record: RoleEntity) {
 
 /** 处理删除角色的操作 */
 async function handleDelete(record: RoleEntity) {
-  await useModal().confirm(`确定要删除角色《${record.name}》吗？`, {})
-  await RoleService.deleteOneById({ roleId: record.id })
-  if (list.value.length <= 1) queryParams.value.pageNo = queryParams.value.pageNo > 1 ? queryParams.value.pageNo - 1 : 1
-  getList()
-  useModal().msgSuccess(`删除成功`)
+  try {
+    await useModal().confirm(`确定要删除角色《${record.name}》吗？`, {})
+    await RoleService.deleteOneById({ roleId: record.id })
+    if (list.value.length <= 1) queryParams.value.pageNo = queryParams.value.pageNo > 1 ? queryParams.value.pageNo - 1 : 1
+    getList()
+    useModal().msgSuccess(`删除成功`)
+  } catch (error) {
+    if (error === 'cancel') return useModal().msg(`操作取消`)
+  }
 }
 
 getList()

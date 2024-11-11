@@ -13,7 +13,7 @@ export class UserService {
   }
 
   /** 根据 userId 查询用户信息 */
-  static findOneById(params: { userId: number }): Promise<UserEntity> {
+  static findOneById(params: { userId: string }): Promise<UserEntity> {
     return request.get('/system/user/detail', { params })
   }
 
@@ -23,7 +23,7 @@ export class UserService {
   }
 
   /** 根据 userId 删除用户信息 */
-  static deleteOneById(params: { userId: number }): Promise<string> {
+  static deleteOneById(params: { userId: string }): Promise<string> {
     return request.delete('/system/user/deleteOneById', { params })
   }
 
