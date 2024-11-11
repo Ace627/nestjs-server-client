@@ -1,10 +1,13 @@
 <template>
   <div class="app-content">
-    <el-card class="flex">
-      <img :src="userStore.avatar" alt="用户头像" class="b-rd-circle" draggable="false" />
-      <div>
-        <div>当时只道是寻常</div>
-        <div></div>
+    <el-card>
+      <div class="flex items-center">
+        <img :src="userStore.avatar" alt="用户头像" class="b-rd-circle" draggable="false" />
+
+        <div class="ml-16px">
+          <div class="fw-bold text-20px tracking-widest">{{ userStore.userInfo.nickname }}</div>
+          <div class="mt-8px text-14px">想当年，金戈铁马，气吞万里如虎。</div>
+        </div>
       </div>
     </el-card>
   </div>

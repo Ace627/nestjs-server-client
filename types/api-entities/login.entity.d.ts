@@ -32,7 +32,7 @@ type Captcha = Pick<LoginInfo, 'captcha' | 'uuid'>
  * 登录后获取的个人信息
  */
 interface LoginUserInfo {
-  user: UserEntity
+  userInfo: UserEntity
   roles: string[]
 }
 
