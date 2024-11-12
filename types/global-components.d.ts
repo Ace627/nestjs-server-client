@@ -8,6 +8,7 @@ declare module 'vue' {
     ApTable: typeof import('../src/components/ApTable/index.vue')['default']
     ApWrapList: typeof import('../src/components/ApWrapList/index.vue')['default']
     IconFont: typeof import('../src/components/IconFont/index.vue')['default']
+    IconSelect: typeof import('../src/components/IconSelect/index.vue')['default']
     InnerLink: typeof import('../src/components/InnerLink/index.vue')['default']
     QRCode: typeof import('../src/components/QRCode/index.vue')['default']
   }

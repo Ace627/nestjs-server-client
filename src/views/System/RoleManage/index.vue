@@ -3,7 +3,7 @@
     <ApWrapList :min-width="170">
       <el-input v-model="queryParams.name" placeholder="请输入角色名称"></el-input>
       <el-input v-model="queryParams.code" placeholder="请输入角色编码"></el-input>
-      <el-input v-model="queryParams.desc" placeholder="请输入角色描述"></el-input>
+      <el-input v-model="queryParams.remark" placeholder="请输入角色备注"></el-input>
       <el-select v-model="queryParams.status" placeholder="请选择角色状态">
         <el-option label="启用" :value="1"></el-option>
         <el-option label="停用" :value="0"></el-option>
@@ -53,7 +53,6 @@ const columns = [
   { label: '序号', type: 'index', minWidth: '80px' },
   { label: '角色名称', prop: 'name', minWidth: '120px' },
   { label: '角色编码', prop: 'code', minWidth: '90px' },
-  // { label: '角色描述', prop: 'desc', minWidth: '220px' },
   { label: '状态', minWidth: '100px', slot: 'status' },
   // { label: '创建时间', prop: 'createTime', minWidth: '160px' },
   { label: '最近更新', prop: 'updateTime', minWidth: '160px' },
