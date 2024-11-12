@@ -27,6 +27,7 @@
       <template #action="{ row }">
         <el-link type="primary" @click="handleUpdate(row)">编辑</el-link>
         <el-link type="danger" @click="handleDelete(row)">删除</el-link>
+        <el-link type="warning" @click="handleAuth(row)">授权</el-link>
       </template>
     </ApTable>
 
@@ -35,6 +36,7 @@
 
     <!-- 添加或修改角色配置对话框 -->
     <RoleAction ref="roleActionRef" @getList="getList" />
+    <AuthPermission ref="authPermissionRef" @getList="getList" />
   </div>
 </template>
 
@@ -42,12 +44,15 @@
 defineOptions({ name: 'RoleManage' })
 import { RoleService } from '@/api'
 import RoleAction from './RoleAction.vue'
+import AuthPermission from './AuthPermission.vue'
+
 const queryParams = ref<TableQuery<RoleEntity>>({ pageNo: 1, pageSize: 10 })
 const loading = ref<boolean>(false)
 const list = ref<RoleEntity[]>([])
 const total = ref<number>(0)
 /** 获取角色操作对话框组件的实例 */
 const roleActionInstance = useTemplateRef<InstanceType<typeof RoleAction>>('roleActionRef')
+const authPermissionRef = ref<InstanceType<typeof AuthPermission>>()
 
 const columns = [
   { label: '序号', type: 'index', minWidth: '80px' },
@@ -106,6 +111,10 @@ async function handleDelete(record: RoleEntity) {
   } catch (error) {
     if (error === 'cancel') return useModal().msg(`操作取消`)
   }
+}
+
+function handleAuth(record: RoleEntity) {
+  authPermissionRef.value?.handleOpen(record.id)
 }
 
 getList()
