@@ -18,8 +18,8 @@ export class MenuService {
   /**
    * 查询树状菜单列表
    */
-  static findTreeList(): Promise<any> {
-    return request.get(`/system/menu/findTreeList`)
+  static findTreeList(params: Partial<MenuEntity>): Promise<MenuEntity[]> {
+    return request.get(`/system/menu/findTreeList`, { params })
   }
 
   /**

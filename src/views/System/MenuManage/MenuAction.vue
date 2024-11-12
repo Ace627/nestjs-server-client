@@ -165,9 +165,9 @@ async function handleSubmit() {
   try {
     await formRef.value?.validate()
     isUpdate.value ? await MenuService.update(model.value) : await MenuService.create(model.value)
+    useModal().msgSuccess(submitMessage.value)
     handleClose()
     eimts('getList')
-    useModal().msgSuccess(submitMessage.value)
   } catch (error) {
     console.log('error: ', error)
   }

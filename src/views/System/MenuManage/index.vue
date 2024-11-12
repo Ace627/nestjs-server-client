@@ -1,5 +1,17 @@
 <template>
   <div class="app-content">
+    <ApWrapList :min-width="170">
+      <el-input v-model="queryParams.title" placeholder="请输入菜单名称"></el-input>
+      <el-select v-model="queryParams.status" placeholder="请选择菜单状态">
+        <el-option label="启用" :value="1"></el-option>
+        <el-option label="停用" :value="0"></el-option>
+      </el-select>
+      <div>
+        <el-button plain type="danger" icon="Refresh" @click="resetQuery">重置</el-button>
+        <el-button plain type="primary" icon="Search" @click="handleQuery">查询</el-button>
+      </div>
+    </ApWrapList>
+
     <div class="my-16px">
       <el-button type="primary" plain icon="Plus" @click="handleCreate()">新增</el-button>
       <el-button plain icon="Sort" type="info" @click="toggleExpandAll"> 展开/折叠 </el-button>
@@ -29,6 +41,7 @@ defineOptions({ name: 'MenuManage' })
 import { MenuService } from '@/api'
 import MenuAction from './MenuAction.vue'
 
+const queryParams = ref({} as Partial<MenuEntity>)
 const loading = ref(false)
 /** 是否展开，默认全部折叠 */
 const isExpandAll = ref(false)
@@ -53,11 +66,19 @@ const columns = ref([
 async function getList() {
   try {
     loading.value = true
-    list.value = await MenuService.findTreeList()
+    list.value = await MenuService.findTreeList(queryParams.value)
     loading.value = false
   } catch (error) {
     loading.value = false
   }
+}
+function resetQuery() {
+  queryParams.value = {}
+  handleQuery()
+}
+
+function handleQuery() {
+  getList()
 }
 
 function handleCreate(record?: MenuEntity) {
