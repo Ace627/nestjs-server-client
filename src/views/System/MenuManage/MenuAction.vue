@@ -102,6 +102,7 @@
 defineOptions({ name: 'MenuAction' })
 import { GlobalComponents } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
+import { MenuService } from '@/api'
 
 /** 接收父组件传递的事件 */
 const eimts = defineEmits(['getList'])
@@ -123,10 +124,29 @@ const rules: FormRules<MenuEntity> = {
   title: { required: true, message: '菜单名称不可为空', trigger: 'blur' },
 }
 
-async function handleOpen() {
+/**
+ * 处理弹框打开的操作
+ */
+async function handleOpen(record?: MenuEntity) {
+  const parentId = record ? (record.type === 'F' ? record.parentId : record.id) : '0'
+  model.value = { ...defaultModel, parentId } as MenuEntity
+  if (record && record.type === 'F') model.value.type = 'F'
+  menuTreeSelectOption.value = await MenuService.findParentList()
   visible.value = true
 }
 
+/**
+ * 响应父组件的编辑操作
+ */
+async function handleDetail(record: MenuEntity) {
+  menuTreeSelectOption.value = await MenuService.findParentList()
+  model.value = await MenuService.findOneById({ menuId: record.id })
+  visible.value = true
+}
+
+/**
+ * 处理对话框关闭的操作
+ */
 function handleClose() {
   formRef.value?.resetFields()
   model.value = defaultModel as MenuEntity
@@ -138,16 +158,23 @@ function selectMenuIcon(name: string) {
   model.value.icon! = name
 }
 
+/**
+ * 处理表单提交的操作
+ */
 async function handleSubmit() {
   try {
     console.log(toRaw(model.value))
     await formRef.value?.validate()
+    isUpdate.value ? await MenuService.update(model.value) : await MenuService.create(model.value)
+    handleClose()
+    eimts('getList')
+    useModal().msgSuccess(submitMessage.value)
   } catch (error) {
     console.log('error: ', error)
   }
 }
 
-defineExpose({ handleOpen })
+defineExpose({ handleOpen, handleDetail })
 </script>
 
 <style lang="scss" scoped>
