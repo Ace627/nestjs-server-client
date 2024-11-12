@@ -163,7 +163,6 @@ function selectMenuIcon(name: string) {
  */
 async function handleSubmit() {
   try {
-    console.log(toRaw(model.value))
     await formRef.value?.validate()
     isUpdate.value ? await MenuService.update(model.value) : await MenuService.create(model.value)
     handleClose()

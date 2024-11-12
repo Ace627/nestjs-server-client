@@ -23,6 +23,12 @@ export class MenuService {
   }
 
   /**
+   * 根据 ID 更新单个菜单
+   */ static update(data: MenuEntity): Promise<string> {
+    return request.post('/system/menu/update', data)
+  }
+
+  /**
    * 根据 ID 查询单个菜单
    */
   static findOneById(params: { menuId: string }): Promise<MenuEntity> {
@@ -30,8 +36,9 @@ export class MenuService {
   }
 
   /**
-   * 根据 ID 更新单个菜单
-   */ static update(data: MenuEntity): Promise<string> {
-    return request.post('/system/menu/update', data)
+   * 根据 ID 删除单个菜单
+   */
+  static deleteOneById(params: { menuId: string }): Promise<string> {
+    return request.get('/system/menu/delete', { params })
   }
 }

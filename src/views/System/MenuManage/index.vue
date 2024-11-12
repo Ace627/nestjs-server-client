@@ -66,7 +66,16 @@ function handleCreate(record?: MenuEntity) {
 function handleUpdate(record: MenuEntity) {
   menuActionRef.value?.handleDetail(record)
 }
-function handleDelete(record: MenuEntity) {}
+async function handleDelete(record: MenuEntity) {
+  try {
+    await useModal().confirm(`确定要删除《${record.title}》吗？`)
+    await MenuService.deleteOneById({ menuId: record.id })
+    useModal().msgSuccess(`删除成功`)
+    getList()
+  } catch (error) {
+    if (error === 'cancel') return useModal().msg(`操作取消`)
+  }
+}
 
 /**
  * 展开/折叠操作
