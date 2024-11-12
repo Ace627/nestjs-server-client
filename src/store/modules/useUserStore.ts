@@ -42,6 +42,7 @@ export default defineStore('user', () => {
     try {
       const data = await LoginService.getInfo()
       roles.value = data.roles
+      permissions.value = data.permissions
       userInfo.value = data.userInfo
     } catch (error) {
       return Promise.reject(error)

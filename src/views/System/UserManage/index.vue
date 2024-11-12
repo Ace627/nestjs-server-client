@@ -1,6 +1,6 @@
 <template>
   <div class="app-content">
-    <ApWrapList :min-width="180">
+    <ApWrapList :min-width="180" v-permissions="['system:user:query']">
       <el-input v-model="queryParams.username" placeholder="请输入用户账号"></el-input>
       <el-select v-model="queryParams.status" placeholder="请选择用户状态">
         <el-option label="启用" :value="1"></el-option>
@@ -15,9 +15,9 @@
     </ApWrapList>
 
     <div class="my-16px">
-      <el-button type="primary" plain icon="Plus" @click="handleCreate">新增</el-button>
-      <el-button type="success" plain icon="Upload" @click="userUploadInstance?.handleOpen()">导入</el-button>
-      <el-button type="warning" plain icon="Download" @click="handleDownload">导出</el-button>
+      <el-button type="primary" plain icon="Plus" @click="handleCreate" v-permissions="['system:user:create']">新增</el-button>
+      <!-- <el-button type="success" plain icon="Upload" @click="userUploadInstance?.handleOpen()">导入</el-button>
+      <el-button type="warning" plain icon="Download" @click="handleDownload">导出</el-button> -->
     </div>
 
     <!-- 用户列表展示 -->
@@ -27,8 +27,8 @@
         <el-tag v-if="row.status === 1">正常</el-tag>
       </template>
       <template #action="{ row }">
-        <el-link type="primary" @click="handleUpdate(row.id)">编辑</el-link>
-        <el-link type="danger" @click="handleDelete(row)">删除</el-link>
+        <el-link type="primary" @click="handleUpdate(row.id)" v-permissions="['system:user:update']">编辑</el-link>
+        <el-link type="danger" @click="handleDelete(row)" v-permissions="['system:user:delete']">删除</el-link>
       </template>
     </ApTable>
 

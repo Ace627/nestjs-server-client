@@ -1,6 +1,6 @@
 <template>
   <div class="app-content">
-    <ApWrapList :min-width="170">
+    <ApWrapList :min-width="170" v-permissions="['system:menu:query']">
       <el-input v-model="queryParams.title" placeholder="请输入菜单名称"></el-input>
       <el-select v-model="queryParams.status" placeholder="请选择菜单状态">
         <el-option label="启用" :value="1"></el-option>
@@ -13,7 +13,7 @@
     </ApWrapList>
 
     <div class="my-16px">
-      <el-button type="primary" plain icon="Plus" @click="handleCreate()">新增</el-button>
+      <el-button type="primary" plain icon="Plus" @click="handleCreate()" v-permissions="['system:menu:create']">新增</el-button>
       <el-button plain icon="Sort" type="info" @click="toggleExpandAll"> 展开/折叠 </el-button>
     </div>
 
@@ -26,9 +26,9 @@
         <el-tag v-if="row.status === 1">正常</el-tag>
       </template>
       <template #action="{ row }">
-        <el-link type="primary" @click="handleCreate(row)">新增</el-link>
-        <el-link type="primary" @click="handleUpdate(row)">编辑</el-link>
-        <el-link type="danger" @click="handleDelete(row)">删除</el-link>
+        <el-link type="primary" @click="handleCreate(row)" v-permissions="['system:menu:create']">新增</el-link>
+        <el-link type="primary" @click="handleUpdate(row)" v-permissions="['system:menu:update']">编辑</el-link>
+        <el-link type="danger" @click="handleDelete(row)" v-permissions="['system:menu:delete']">删除</el-link>
       </template>
     </ApTable>
 

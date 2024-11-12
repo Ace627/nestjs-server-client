@@ -1,6 +1,6 @@
 <template>
   <div class="app-content">
-    <ApWrapList :min-width="170">
+    <ApWrapList :min-width="170" v-permissions="['system:role:query']">
       <el-input v-model="queryParams.name" placeholder="请输入角色名称"></el-input>
       <el-input v-model="queryParams.code" placeholder="请输入角色编码"></el-input>
       <el-input v-model="queryParams.remark" placeholder="请输入角色备注"></el-input>
@@ -15,7 +15,7 @@
     </ApWrapList>
 
     <div class="my-16px">
-      <el-button type="primary" plain icon="Plus" @click="handleCreate">新增</el-button>
+      <el-button type="primary" plain icon="Plus" @click="handleCreate" v-permissions="['system:role:create']">新增</el-button>
     </div>
 
     <!-- 角色列表展示 -->
@@ -25,9 +25,9 @@
         <el-tag v-if="row.status === 1">正常</el-tag>
       </template>
       <template #action="{ row }">
-        <el-link type="primary" @click="handleUpdate(row)">编辑</el-link>
-        <el-link type="danger" @click="handleDelete(row)">删除</el-link>
-        <el-link type="warning" @click="handleAuth(row)">授权</el-link>
+        <el-link type="primary" @click="handleUpdate(row)" v-permissions="['system:role:update']">编辑</el-link>
+        <el-link type="danger" @click="handleDelete(row)" v-permissions="['system:role:delete']">删除</el-link>
+        <el-link type="warning" @click="handleAuth(row)" v-permissions="['system:role:update']">授权</el-link>
       </template>
     </ApTable>
 

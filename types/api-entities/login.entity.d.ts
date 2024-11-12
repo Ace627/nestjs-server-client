@@ -34,6 +34,7 @@ type Captcha = Pick<LoginInfo, 'captcha' | 'uuid'>
 interface LoginUserInfo {
   userInfo: UserEntity
   roles: string[]
+  permissions: string[]
 }
 
 interface LogoutOption {
