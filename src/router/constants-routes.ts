@@ -23,37 +23,10 @@ export const constantRoutes: RouteRecordRaw[] = [
     redirect: '/dashboard',
     children: [
       {
-        path: 'dashboard',
+        path: '/dashboard',
         name: 'Dashboard',
         component: () => import(`@/views/Dashboard/index.vue`),
         meta: { title: '首页', icon: 'Home' },
-      },
-    ],
-  },
-
-  {
-    path: '/System',
-    name: 'System',
-    component: Layout,
-    meta: { title: '系统管理', alwaysShow: true, icon: 'Setting' },
-    children: [
-      {
-        path: 'UserManage',
-        name: 'UserManage',
-        component: () => import('@/views/System/UserManage/index.vue'),
-        meta: { title: '用户管理', icon: 'User' },
-      },
-      {
-        path: 'RoleManage',
-        name: 'RoleManage',
-        component: () => import('@/views/System/RoleManage/index.vue'),
-        meta: { title: '角色管理', icon: 'Role' },
-      },
-      {
-        path: 'MenuManage',
-        name: 'MenuManage',
-        component: () => import('@/views/System/MenuManage/index.vue'),
-        meta: { title: '菜单管理', icon: 'Setting' },
       },
     ],
   },

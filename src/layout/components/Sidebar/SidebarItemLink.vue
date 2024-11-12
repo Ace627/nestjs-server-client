@@ -12,7 +12,9 @@
 defineOptions({ name: 'SidebarItemLink' })
 import { isExternal } from '@/utils/validate'
 
-defineProps({ to: { type: String, required: true } })
+const props = defineProps({ to: { type: String, required: true } })
+
+// console.log(111, props.to)
 </script>
 
 <style lang="scss" scoped></style>

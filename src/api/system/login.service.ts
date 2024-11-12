@@ -1,4 +1,5 @@
 import { request } from '@/utils/request'
+import type { RouteRecordRaw } from 'vue-router'
 
 /** 避免 hooks 写法下的命名冲突 */
 export class LoginService {
@@ -17,6 +18,13 @@ export class LoginService {
    */
   static getInfo(): Promise<LoginUserInfo> {
     return request.get('/getInfo')
+  }
+
+  /**
+   * 获取用户路由信息
+   */
+  static getRoutes(): Promise<RouteRecordRaw[]> {
+    return request.get('/getRoutes')
   }
 
   /** 退出登录 */
