@@ -51,10 +51,10 @@ const menuActionRef = ref<InstanceType<typeof MenuAction>>()
 const list = ref<MenuEntity[]>([])
 const columns = ref([
   { label: '菜单名称', prop: 'title', minWidth: '140px' },
-  { label: '菜单图标', slot: 'icon' },
+  { label: '菜单图标', slot: 'icon', minWidth: '90px' },
   { label: '菜单顺序', prop: 'order', minWidth: '90px' },
   { label: '权限标识', prop: 'permission', width: '160px' },
-  { label: '组件路径', prop: 'component', minWidth: '160px' },
+  { label: '组件路径', prop: 'component', minWidth: '200px' },
   { label: '菜单状态', slot: 'status', minWidth: '100px' },
   { label: '上次更新', prop: 'updateTime', minWidth: '160px' },
   { label: '操作', slot: 'action', minWidth: '130px' },
