@@ -35,7 +35,7 @@ export async function globalRouterBeforeGuard(to: RouteLocationNormalized, from:
     next({ ...to, replace: true })
   } catch (error: any) {
     /** 过程中发生任何错误，都直接重置 Token，并重定向到登录页面 */
-    useModal().msgError(error, { duration: 0 })
+    // useModal().msgError(error, { duration: 0 })
     await userStore.logout()
     next(`/login?redirect=${to.fullPath}`)
   }

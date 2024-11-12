@@ -7,6 +7,4 @@ defineOptions({ name: 'Layout' })
 import LayoutClassical from './LayoutClassical/index.vue'
 </script>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>
