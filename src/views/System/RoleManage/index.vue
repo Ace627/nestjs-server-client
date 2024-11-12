@@ -25,9 +25,11 @@
         <el-tag v-if="row.status === 1">正常</el-tag>
       </template>
       <template #action="{ row }">
-        <el-link type="primary" @click="handleUpdate(row)" v-permissions="['system:role:update']">编辑</el-link>
-        <el-link type="danger" @click="handleDelete(row)" v-permissions="['system:role:delete']">删除</el-link>
-        <el-link type="warning" @click="handleAuth(row)" v-permissions="['system:role:update']">授权</el-link>
+        <template v-if="row.code !== 'admin'">
+          <el-link type="primary" @click="handleUpdate(row)" v-permissions="['system:role:update']">编辑</el-link>
+          <el-link type="danger" @click="handleDelete(row)" v-permissions="['system:role:delete']">删除</el-link>
+          <el-link type="warning" @click="handleAuth(row)" v-permissions="['system:role:update']">授权</el-link>
+        </template>
       </template>
     </ApTable>
 
