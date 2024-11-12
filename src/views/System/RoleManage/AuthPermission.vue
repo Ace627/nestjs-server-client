@@ -28,7 +28,7 @@ const emits = defineEmits(['getList'])
 /** 抽屉是否可见 */
 const visible = ref(false)
 /** 是否开启父子联动 */
-const checkStrictly = ref<boolean>(true)
+const checkStrictly = ref<boolean>(false)
 /** 默认展开的节点的 key 的数组 */
 const defaultCheckedKeys = ref<number[]>([])
 const menuTreeRef = ref<InstanceType<typeof ElTree>>()
