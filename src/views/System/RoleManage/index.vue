@@ -1,6 +1,6 @@
 <template>
   <div class="app-content">
-    <ApWrapList :min-width="170" v-permissions="['system:role:query']">
+    <ApWrapList :min-width="180" v-permissions="['system:role:query']">
       <el-input v-model="queryParams.name" placeholder="请输入角色名称"></el-input>
       <el-input v-model="queryParams.code" placeholder="请输入角色编码"></el-input>
       <el-input v-model="queryParams.remark" placeholder="请输入角色备注"></el-input>

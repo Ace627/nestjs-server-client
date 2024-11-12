@@ -18,7 +18,7 @@ const props = defineProps({
   /** iframe 容器的宽度 */
   width: { type: [String, Number], default: '100%' },
   /** iframe 容器的高度 */
-  height: { type: [String, Number], default: '100vh' },
+  height: { type: [String, Number], default: '100%' },
 })
 
 const iframeContainerWidth = computed(() => (isString(props.width) ? props.width : `${props.width}px`))

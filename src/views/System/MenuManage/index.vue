@@ -1,6 +1,6 @@
 <template>
   <div class="app-content">
-    <ApWrapList :min-width="170" v-permissions="['system:menu:query']">
+    <ApWrapList :min-width="180" v-permissions="['system:menu:query']">
       <el-input v-model="queryParams.title" placeholder="请输入菜单名称"></el-input>
       <el-select v-model="queryParams.status" placeholder="请选择菜单状态">
         <el-option label="启用" :value="1"></el-option>
