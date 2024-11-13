@@ -25,3 +25,13 @@ body {
 #nprogress .bar {
   background-color: var(--el-color-primary);
 }
+
+/* 用户头像 */
+.user-avatar {
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.32s;
+}
+.user-avatar:hover {
+  transform: rotate(1turn);
+}

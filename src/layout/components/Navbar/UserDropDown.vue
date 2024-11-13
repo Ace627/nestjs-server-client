@@ -1,7 +1,7 @@
 <template>
   <el-dropdown>
     <div class="flex-center">
-      <el-avatar :src="userStore.avatar" :size="36" alt="avatar" />
+      <el-avatar :src="userStore.avatar" :size="36" alt="avatar" class="user-avatar" />
     </div>
 
     <template #dropdown>

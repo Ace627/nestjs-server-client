@@ -2,7 +2,7 @@
   <div class="app-content">
     <el-card>
       <div class="flex items-center">
-        <img :src="userStore.avatar" alt="用户头像" class="b-rd-circle" draggable="false" />
+        <img :src="userStore.avatar" alt="用户头像" class="user-avatar b-rd-circle" draggable="false" />
 
         <div class="ml-16px">
           <div class="fw-bold text-20px tracking-widest">{{ userStore.userInfo.nickname }}</div>
