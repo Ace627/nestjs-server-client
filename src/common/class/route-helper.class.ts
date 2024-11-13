@@ -22,7 +22,7 @@ export class RouterHelper {
    * 初始化动态路由（用于生成扁平化一级路由，将后端一级路由数据转化为前端 router 格式的一级路由）
    * @param {Array<MenuEntity>} menus 后端返回的菜单组
    */
-  static generateFlattenRoutes(menus: MenuEntity[]): RouteRecordRaw[] {
+  static generateFlattenRoutes(menus: any[]): RouteRecordRaw[] {
     // 首先把你需要动态路由的组件地址全部获取（vue2 中可以直接用拼接的方式，但是 vue3 中必须用这种方式）
     const views = import.meta.glob('@/views/**/*.vue')
     // 过滤菜单 F 是按钮权限 不参与菜单显示
@@ -42,7 +42,7 @@ export class RouterHelper {
    * 递归函数用于生成路由配置，登录的时候也需要调用一次
    * @param {Array<MenuEntity>} menus 后端返回的菜单组
    */
-  static generateRoutes(menus: MenuEntity[], parentId: string = '0') {
+  static generateRoutes(menus: any[], parentId: string = '0') {
     menus = menus.filter((item) => ['M', 'C'].includes(item.type))
     const views = import.meta.glob('@/views/**/*.vue')
     const routeList: RouteRecordRaw[] = []

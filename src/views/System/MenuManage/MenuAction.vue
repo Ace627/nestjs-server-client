@@ -59,7 +59,7 @@
           </el-form-item>
         </el-col>
 
-        <el-col :span="12" v-if="model.type === 'C'">
+        <el-col :span="12" v-if="model.type === 'C' && model.frame === 0">
           <el-form-item label="组件路径" prop="component">
             <el-input v-model.trim="model.component" placeholder="请输入组件路径" />
           </el-form-item>

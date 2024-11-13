@@ -14,7 +14,6 @@ export async function globalRouterBeforeGuard(to: RouteLocationNormalized, from:
   NProgress.start()
   const hasToken = getAccessToken()
   const userStore = useUserStore()
-  const permissionStore = usePermissionStore()
 
   /** 如果没有 Token，但在免登录的白名单中，则直接进入；否则将被重定向到登录页面 */
   if (!hasToken) return isWhiteList(to) ? next() : next(`/login?redirect=${to.fullPath}`)
@@ -27,10 +26,8 @@ export async function globalRouterBeforeGuard(to: RouteLocationNormalized, from:
     if (userStore.roles.length !== 0) return next()
     /** 否则要重新获取权限角色 判断当前用户是否已拉取完 user_info 信息 */
     await userStore.getInfo()
-    /** 根据角色生成可访问的 Routes（可访问路由 = 常驻路由 + 有访问权限的动态路由） */
-    await permissionStore.generateRoutes(userStore.roles)
     /** 将'有访问权限的动态路由' 添加到 Router 中 */
-    permissionStore.dynamicRoutes.forEach((route) => !isExternal(route.path) && router.addRoute(route))
+    userStore.dynamicRoutes.forEach((route) => !isExternal(route.path) && router.addRoute(route))
     /** 确保添加路由已完成 设置 replace: true, 因此导航将不会留下历史记录 */
     next({ ...to, replace: true })
   } catch (error: any) {

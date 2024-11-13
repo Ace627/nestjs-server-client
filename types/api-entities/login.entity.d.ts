@@ -35,6 +35,7 @@ interface LoginUserInfo {
   userInfo: UserEntity
   roles: string[]
   permissions: string[]
+  menus: MenuEntity[]
 }
 
 interface LogoutOption {

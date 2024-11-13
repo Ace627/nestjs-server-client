@@ -57,7 +57,10 @@ request.interceptors.response.use(
       return response.data.result
     } else if (code === HttpStatusCode.Unauthorized) {
       useModal().msgError(message)
-      setTimeout(() => useLogin().handleLogout({ confirm: false }), 1.5 * 1000)
+      setTimeout(() => {
+        useUserStore().logout()
+        window.location.reload()
+      }, 1 * 1000)
     } else {
       useModal().msgError(message)
       return Promise.reject(new Error(message))
