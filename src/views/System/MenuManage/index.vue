@@ -1,5 +1,5 @@
 <template>
-  <div class="app-content">
+  <div class="app-content flex flex-col h-full">
     <ApWrapList :min-width="180" v-permissions="['system:menu:query']">
       <el-input v-model="queryParams.title" placeholder="请输入菜单名称"></el-input>
       <el-select v-model="queryParams.status" placeholder="请选择菜单状态">
@@ -17,17 +17,26 @@
       <el-button plain icon="Sort" type="info" @click="toggleExpandAll"> 展开/折叠 </el-button>
     </div>
 
-    <ApTable :records="list" :columns :loading row-key="id" :default-expand-all="isExpandAll" v-if="refreshTable">
+    <ApTable :records="list" :columns :loading row-key="id" :default-expand-all="isExpandAll" v-if="refreshTable" border>
       <template #icon="{ row }">
         <IconFont :name="row.icon" v-if="row.icon" />
+      </template>
+      <template #type="{ row }">
+        <el-tag v-if="row.type === 'M'" type="primary">目录</el-tag>
+        <el-tag v-if="row.type === 'C'" type="warning">菜单</el-tag>
+        <el-tag v-if="row.type === 'F'" type="success">按钮</el-tag>
       </template>
       <template #status="{ row }">
         <el-tag v-if="row.status === 0" type="danger">停用</el-tag>
         <el-tag v-if="row.status === 1">正常</el-tag>
       </template>
+      <template #visible="{ row }">
+        <el-tag v-if="row.visible === 0" type="danger">隐藏</el-tag>
+        <el-tag v-if="row.visible === 1">显示</el-tag>
+      </template>
       <template #action="{ row }">
         <el-link type="primary" @click="handleCreate(row)" v-permissions="['system:menu:create']">新增</el-link>
-        <el-link type="primary" @click="handleUpdate(row)" v-permissions="['system:menu:update']">编辑</el-link>
+        <el-link type="warning" @click="handleUpdate(row)" v-permissions="['system:menu:update']">编辑</el-link>
         <el-link type="danger" @click="handleDelete(row)" v-permissions="['system:menu:delete']">删除</el-link>
       </template>
     </ApTable>
@@ -50,14 +59,17 @@ const refreshTable = ref(true)
 const menuActionRef = ref<InstanceType<typeof MenuAction>>()
 const list = ref<MenuEntity[]>([])
 const columns = ref([
-  { label: '菜单名称', prop: 'title', minWidth: '140px' },
-  { label: '菜单图标', slot: 'icon', minWidth: '90px' },
-  { label: '菜单顺序', prop: 'order', minWidth: '90px' },
+  { label: '菜单名称', prop: 'title', minWidth: '150px' },
+  { label: '菜单类型', slot: 'type', minWidth: '100px' },
+  { label: '图标', slot: 'icon', minWidth: '60px' },
+  { label: '显示顺序', prop: 'order', minWidth: '90px' },
   { label: '权限标识', prop: 'permission', width: '160px' },
-  { label: '组件路径', prop: 'component', minWidth: '200px' },
+  { label: '路由地址', prop: 'path', minWidth: '180px', showOverflowTooltip: true },
+  { label: '页面地址', prop: 'component', minWidth: '200px' },
   { label: '菜单状态', slot: 'status', minWidth: '100px' },
+  { label: '是否隐藏', slot: 'visible', minWidth: '100px' },
   { label: '上次更新', prop: 'updateTime', minWidth: '160px' },
-  { label: '操作', slot: 'action', minWidth: '130px' },
+  { label: '操作', slot: 'action', minWidth: '130px', fixed: 'right' },
 ])
 
 /**

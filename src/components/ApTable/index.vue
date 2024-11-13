@@ -1,5 +1,13 @@
 <template>
-  <el-table highlight-current-row :data="records" class="custom-table" v-loading="loading" element-loading-text="正在加载..." element-loading-background="rgba(122, 122, 122, 0.8)">
+  <el-table
+    highlight-current-row
+    :data="records"
+    class="custom-table"
+    v-loading="loading"
+    element-loading-text="正在加载..."
+    element-loading-background="rgba(122, 122, 122, 0.8)"
+    empty-text="暂时没有数据哟🌻"
+  >
     <el-table-column v-for="(column, index) in columns" :key="index" v-bind="column">
       <template v-if="column.slot" #default="{ $index, row }">
         <slot :name="column.slot" :$index :row></slot>
