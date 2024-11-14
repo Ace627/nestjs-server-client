@@ -55,7 +55,7 @@
 
         <el-col :span="12" v-if="model.type !== 'F'">
           <el-form-item label="路由地址" prop="path">
-            <el-input v-model.trim="model.path" placeholder="请输入路由地址" />
+            <el-input v-model.trim="model.path" placeholder="请输入路由地址" @change="onPathChange" />
           </el-form-item>
         </el-col>
 
@@ -122,6 +122,11 @@ const rules: FormRules<MenuEntity> = {
   path: { required: true, message: '路由地址不可为空', trigger: 'blur' },
   order: { required: true, message: '菜单顺序不能为空', trigger: 'blur' },
   title: { required: true, message: '菜单名称不可为空', trigger: 'blur' },
+}
+
+function onPathChange() {
+  if (model.value.frame === 1 || model.value.type !== 'C') return
+  model.value.component = `${model.value.path.replace('/', '')}/index`
 }
 
 /**
