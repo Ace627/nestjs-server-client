@@ -44,7 +44,7 @@
 
 <script setup lang="ts">
 defineOptions({ name: 'RoleManage' })
-import { RoleService } from '@/api'
+import { RoleService } from '@/api/system/role.service'
 import RoleAction from './RoleAction.vue'
 import AuthPermission from './AuthPermission.vue'
 

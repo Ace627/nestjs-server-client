@@ -21,7 +21,8 @@
 <script setup lang="ts">
 defineOptions({ name: 'AuthPermission' })
 import { ElTree } from 'element-plus'
-import { MenuService, RoleService } from '@/api'
+import { RoleService } from '@/api/system/role.service'
+import { MenuService } from '@/api/system/menu.service'
 
 const emits = defineEmits(['getList'])
 

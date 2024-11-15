@@ -45,7 +45,7 @@
 
 <script setup lang="ts">
 defineOptions({ name: 'UserManage' })
-import { UserService } from '@/api'
+import { UserService } from '@/api/system/user.service'
 import UserAction from './UserAction.vue'
 import UserUpload from './UserUpload.vue'
 

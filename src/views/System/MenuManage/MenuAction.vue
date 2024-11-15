@@ -102,7 +102,7 @@
 defineOptions({ name: 'MenuAction' })
 import { GlobalComponents } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
-import { MenuService } from '@/api'
+import { MenuService } from '@/api/system/menu.service'
 
 /** 接收父组件传递的事件 */
 const eimts = defineEmits(['getList'])

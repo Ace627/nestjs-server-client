@@ -75,7 +75,7 @@ export default defineConfig(({ command, mode }) => {
       /** 图片转 base64 编码的阈值。为防止过多的 http 请求，Vite 会将小于此阈值的图片转为 base64 格式 */
       assetsInlineLimit: 4096,
       /** 规定触发警告的 chunk 大小。（以 kbs 为单位） */
-      chunkSizeWarningLimit: 1024,
+      chunkSizeWarningLimit: 4096,
       /** 启用/禁用 CSS 代码拆分 */
       cssCodeSplit: true,
       /** 构建后是否生成 source map 文件 */

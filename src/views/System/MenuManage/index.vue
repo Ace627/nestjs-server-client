@@ -47,7 +47,7 @@
 
 <script setup lang="ts">
 defineOptions({ name: 'MenuManage' })
-import { MenuService } from '@/api'
+import { MenuService } from '@/api/system/menu.service'
 import MenuAction from './MenuAction.vue'
 
 const queryParams = ref({} as Partial<MenuEntity>)

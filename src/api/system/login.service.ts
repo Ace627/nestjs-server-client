@@ -8,7 +8,7 @@ export class LoginService {
   }
 
   /** 登录 */
-  static login(data: LoginAccountDto): Promise<LoginResult> {
+  static login(data: LoginUserDto): Promise<LoginResult> {
     return request.post('/login', data)
   }
 

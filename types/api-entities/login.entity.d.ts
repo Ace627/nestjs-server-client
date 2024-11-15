@@ -1,7 +1,7 @@
 /**
  * 登录所需的参数体
  */
-interface LoginAccountDto {
+interface LoginUserDto {
   /** 登录账号 */
   username: string
   /** 登录密码 */

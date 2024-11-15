@@ -28,7 +28,7 @@
 
 <script setup lang="ts">
 defineOptions({ name: 'UserUpload' })
-import { UserService } from '@/api'
+import { UserService } from '@/api/system/user.service'
 import type { UploadInstance, UploadRequestHandler } from 'element-plus'
 
 /** 接收父组件传递的事件 */

@@ -30,7 +30,7 @@
 
 <script setup lang="ts">
 defineOptions({ name: 'RoleAction' })
-import { RoleService } from '@/api'
+import { RoleService } from '@/api/system/role.service'
 import type { FormInstance, FormRules } from 'element-plus'
 
 /** 接收父组件传递的事件 */

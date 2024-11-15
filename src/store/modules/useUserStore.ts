@@ -1,4 +1,4 @@
-import { LoginService } from '@/api'
+import { LoginService } from '@/api/system/login.service'
 import type { RouteRecordRaw } from 'vue-router'
 import { constantRoutes } from '@/router/constants-routes'
 import { getAccessToken, removeAccessToken, setAccessToken } from '@/utils/cache'
@@ -22,7 +22,7 @@ export default defineStore('user', () => {
   const avatar = ref<string>(new URL('../../assets/images/default/default-avatar.gif', import.meta.url).href)
 
   /** 登录 */
-  async function login(loginParams: LoginAccountDto) {
+  async function login(loginParams: LoginUserDto) {
     const data = await LoginService.login(loginParams)
     setAccessToken(data.accessToken)
     token.value = getAccessToken()

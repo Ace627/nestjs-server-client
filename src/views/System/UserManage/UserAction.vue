@@ -58,7 +58,8 @@
 
 <script setup lang="ts">
 defineOptions({ name: 'UserAction' })
-import { RoleService, UserService } from '@/api'
+import { UserService } from '@/api/system/user.service'
+import { RoleService } from '@/api/system/role.service'
 import { GenderOption } from '@/config'
 import { GenderEnum } from '@/enums'
 import { validatePhone } from '@/utils/validator'

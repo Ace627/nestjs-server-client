@@ -38,7 +38,7 @@
 <script setup lang="ts">
 defineOptions({ name: 'Login' })
 import { pick } from 'lodash-es'
-import { LoginService } from '@/api'
+import { LoginService } from '@/api/system/login.service'
 import type { FormInstance, FormRules } from 'element-plus'
 import defaultCaptcha from '@/assets/images/default/default-captcha.png'
 import { getLoginInfo, removeLoginInfo, setLoginInfo } from '@/utils/cache'
@@ -52,14 +52,14 @@ const redirect = (route.query['redirect'] as string) ?? '/'
 /** 登录表单实例 */
 const loginFormRef = ref<FormInstance>()
 /** 登录表单数据 */
-const defaultModel: Readonly<Partial<LoginAccountDto>> = { rememberMe: false }
-const loginForm = ref({ ...defaultModel } as LoginAccountDto)
+const defaultModel: Readonly<Partial<LoginUserDto>> = { rememberMe: false }
+const loginForm = ref({ ...defaultModel } as LoginUserDto)
 /** 登录按钮 Loading */
 const loading = ref<boolean>(false)
 /** 验证码图片地址 */
 const captchaURL = ref<string>()
 /** 登录表单的校验规则 */
-const loginRules: FormRules<LoginAccountDto> = {
+const loginRules: FormRules<LoginUserDto> = {
   username: [{ required: true, trigger: 'blur', message: '请输入您的账号' }],
   password: [{ required: true, trigger: 'blur', message: '请输入您的密码' }],
   captcha: [{ required: true, trigger: 'blur', message: '请输入验证码' }],
