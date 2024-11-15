@@ -1,4 +1,4 @@
-import { CacheKey } from '@/config'
+import { CacheKey } from '@/common'
 
 /** 项目配置类型 */
 export interface ProjectConfig {

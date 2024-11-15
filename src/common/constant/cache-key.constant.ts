@@ -1,4 +1,4 @@
-import pkg from '../../package.json'
+import pkg from '../../../package.json'
 
 /** 缓存键的前缀 */
 const CACHE_PREFIX = pkg.name.toUpperCase()

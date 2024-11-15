@@ -1,4 +1,4 @@
-import { CacheKey } from '@/config'
+import { CacheKey } from '@/common'
 
 /** 存储登录信息到本地 */
 export function setLoginInfo(data: Partial<LoginUserDto>): void {

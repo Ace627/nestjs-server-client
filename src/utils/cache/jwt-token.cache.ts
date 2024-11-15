@@ -1,4 +1,4 @@
-import { CacheKey } from '@/config'
+import { CacheKey } from '@/common'
 
 /** 存储登录凭证到本地 */
 export function setAccessToken(token: string): void {

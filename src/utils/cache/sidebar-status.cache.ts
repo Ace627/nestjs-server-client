@@ -1,4 +1,4 @@
-import { CacheKey } from '@/config'
+import { CacheKey } from '@/common'
 
 const sidebarStatus = useStorage<boolean>(CacheKey.SIDEBAR_STATUS, true)
 

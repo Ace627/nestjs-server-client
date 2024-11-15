@@ -2,7 +2,7 @@ import { LoginService } from '@/api/system/login.service'
 import type { RouteRecordRaw } from 'vue-router'
 import { constantRoutes } from '@/router/constants-routes'
 import { getAccessToken, removeAccessToken, setAccessToken } from '@/utils/cache'
-import { RouterHelper } from '@/common'
+import { RouterHelper } from '@/common/helper/route-helper'
 
 /** 第一个参数是该 store 的唯一 id */
 export default defineStore('user', () => {
