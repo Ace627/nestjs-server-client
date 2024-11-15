@@ -1,10 +1,11 @@
+import { AppConfig } from '@/common'
 import Layout from '@/layout/index.vue'
 import type { RouteRecordRaw } from 'vue-router'
 
 /** 常驻路由 除了 redirect/403/404/login 等隐藏页面，其它页面建议设置 Name 属性 */
 export const constantRoutes: RouteRecordRaw[] = [
   {
-    path: '/login',
+    path: AppConfig.LOGIN_PAGE_URL,
     name: 'Login',
     component: () => import('@/views/Login/index.vue'),
     meta: { title: '登录', hidden: true },
@@ -20,10 +21,10 @@ export const constantRoutes: RouteRecordRaw[] = [
   {
     path: '/',
     component: Layout,
-    redirect: '/dashboard',
+    redirect: AppConfig.HOME_PAGE_URL,
     children: [
       {
-        path: '/dashboard',
+        path: AppConfig.HOME_PAGE_URL,
         name: 'Dashboard',
         component: () => import(`@/views/Dashboard/index.vue`),
         meta: { title: '首页', icon: 'Home' },

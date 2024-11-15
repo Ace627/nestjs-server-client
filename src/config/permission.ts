@@ -3,6 +3,7 @@ import { isExternal } from '@/utils/validate'
 import { isWhiteList } from '@/config' // 路由是否在白名单的判断判断方法
 import { getAccessToken } from '@/utils/cache' // 从缓存读取 Token 的方法
 import type { RouteLocationNormalized, NavigationGuardNext } from 'vue-router'
+import { AppConfig } from '@/common'
 
 const { VITE_ROUTER_NPROGRESS } = useEnv()
 const NProgress = useNProgress({ show: VITE_ROUTER_NPROGRESS }) // 顶部进度条
@@ -14,12 +15,13 @@ export async function globalRouterBeforeGuard(to: RouteLocationNormalized, from:
   NProgress.start()
   const hasToken = getAccessToken()
   const userStore = useUserStore()
+  const redirect = to.fullPath
 
   /** 如果没有 Token，但在免登录的白名单中，则直接进入；否则将被重定向到登录页面 */
-  if (!hasToken) return isWhiteList(to) ? next() : next(`/login?redirect=${to.fullPath}`)
+  if (!hasToken) return isWhiteList(to) ? next() : next({ path: AppConfig.LOGIN_PAGE_URL, query: { redirect } })
 
   /** 如果已经登录，并准备进入 Login 页面，则重定向到主页 */
-  if (to.path.toLowerCase() === '/login') return next({ path: '/', replace: true })
+  if (to.path.toLowerCase() === AppConfig.LOGIN_PAGE_URL) return next({ path: '/', replace: true })
 
   try {
     /** 如果用户已经获得其权限角色 直接放行 */
@@ -34,7 +36,7 @@ export async function globalRouterBeforeGuard(to: RouteLocationNormalized, from:
     /** 过程中发生任何错误，都直接重置 Token，并重定向到登录页面 */
     // useModal().msgError(error, { duration: 0 })
     await userStore.logout()
-    next(`/login?redirect=${to.fullPath}`)
+    next({ path: AppConfig.LOGIN_PAGE_URL, query: { redirect } })
   }
 }
 

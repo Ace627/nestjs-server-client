@@ -1,4 +1,4 @@
-import { CacheKey } from '@/common'
+import { AppConfig, CacheKey } from '@/common'
 
 /** 存储登录凭证到本地 */
 export function setAccessToken(token: string): void {
@@ -13,7 +13,7 @@ export function getAccessToken(): string | null {
 /** 从本地存储获取拼接后的登录凭证 */
 export function getFullAccessToken(): string | null {
   const token = getAccessToken()
-  return token ? `Bearer ${token}` : null
+  return token ? `${AppConfig.TOKEN_PREFIX} ${token}` : null
 }
 
 /** 从本地移除存储的登录凭证 */

@@ -1,12 +1,9 @@
-import axios, { AxiosRequestConfig, HttpStatusCode } from 'axios'
+import axios, { HttpStatusCode } from 'axios'
 import { getAccessToken, getFullAccessToken } from '@/utils/cache'
+import { AppConfig } from '@/common'
 
 const { VITE_BASE_API, VITE_REQUEST_TIMEOUT, VITE_REQUEST_NPROGRESS } = useEnv() // 解构环境变量
 const NProgress = useNProgress({ show: VITE_REQUEST_NPROGRESS }) // 顶部进度条
-
-type PendingTask = { config: AxiosRequestConfig; resolve: AnyFunction }
-let isRefreshing = false // 是否还需要刷新的标识
-const pendingTaskList: PendingTask[] = [] // 存储未完成的请求
 
 export const request = axios.create({
   // baseURL 将自动加在 url 前面，除非 url 是一个绝对 URL
@@ -25,9 +22,7 @@ request.interceptors.request.use(
     config.params = config.params || {}
     if (isGetRequest) config.params['timestamp'] = timestamp // 给 get 请求加上时间戳参数，避免从缓存中拿数据
     // 配置请求头
-    if (token) config.headers['Authorization'] = getFullAccessToken() // 让每个请求携带自定义 token 请根据实际情况自行修改
-    if (token) config.headers['X-Access-Token'] = token
-    config.headers['X-TIMESTAMP'] = timestamp
+    if (token) config.headers[AppConfig.AUTHORIZATION] = getFullAccessToken() // 让每个请求携带自定义 token 请根据实际情况自行修改
     // 返回处理后的请求头
     return config
   },
